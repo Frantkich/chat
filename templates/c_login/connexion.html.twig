@@ -1,6 +1,6 @@
-{% block content %}
+{% extends 'base.html.twig' %}
 
-Vous etes sur la page de connexion.
+{% block content %}
 
 	{% for message in app.flashes('errors') %}
 		<div class="alert alert-danger">{{ message }}</div>
@@ -18,58 +18,55 @@ Vous etes sur la page de connexion.
 
 				<input id='bouton' type="submit" value="connexion">
 
-				<h1>OR</h1>
-
-			<a href="/signUp" id="bouton">SIGN UP</a>
+			<a href="/signUp">Not registered ?</a>
 
 		</form>
 
 	</div>
 
-{% endblock %}
-
-
-<style>
+    <style>
     
-#container{
-    width: 40%;
-    margin: auto;
-    margin-top:10%;
-}
+    #container{
+        width: 40%;
+        margin: auto;
+        margin-top:10%;
+    }
 
-#connexion_admin {
-    padding: 5vh;
-    border: 2px solid #f1f1f1;
-    box-shadow: 0 0 0.5vh;
-}
-#container h1{
-    padding-bottom: 3vh;
-    margin: 0;
-    text-align: center;
-}
-
-
-#entrer {
-    padding: 1.8vh 2.2vh;
-    margin: 0.5vh;
-    width: 100%;
-    border:2px solid;
-    font-size: 100%;
-    margin-bottom: 2vh;
-}
+    #connexion_admin {
+        padding: 5vh;
+        border: 2px solid #f1f1f1;
+        box-shadow: 0 0 0.5vh;
+    }
+    #container h1{
+        padding-bottom: 3vh;
+        margin: 0;
+        text-align: center;
+    }
 
 
-#bouton {
-    background-color: #3087e1;
-    color: white;
-    padding: 1.5vw 1.8vw;
-    margin: 8px 0;
-    border: 1px solid #3087e1;
-    width: 100%;
-}
-#bouton:hover {
-    background-color: white;
-    color: #3087e1;
-}
+    #entrer {
+        padding: 1.8vh 2.2vh;
+        margin: 0.5vh;
+        width: 100%;
+        border:2px solid;
+        font-size: 100%;
+        margin-bottom: 2vh;
+    }
 
-</style>
+
+    #bouton {
+        background-color: #3087e1;
+        color: white;
+        padding: 1.5vw 1.8vw;
+        margin: 8px 0;
+        border: 1px solid #3087e1;
+        width: 100%;
+    }
+    #bouton:hover {
+        background-color: white;
+        color: #3087e1;
+    }
+
+    </style>
+
+{% endblock %}

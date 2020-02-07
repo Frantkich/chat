@@ -1,7 +1,63 @@
+{% extends 'base.html.twig' %}
+
 {% block content %}
 
-Vous etes sur la page de création de group.
+	<h1>Create a new conversation :</h1>
 
-{{ form(groupForm) }}
+	{{ form(groupForm) }}
+
+	<style>
+    
+	#group{
+	    width: 40%;
+	    margin: auto;
+	    margin-top:3vh;
+	}
+
+	#group div {
+	    padding: 5vh;
+	    border: 2px solid #f1f1f1;
+	    box-shadow: 0 0 0.5vh;
+	}
+	h1{
+	    padding-top: 3vh;
+	    margin: 0;
+	    text-align: center;
+	}
+
+
+	#group_nom,#group_photo {
+	    padding: 1.8vh 2.2vh;
+	    margin: 0.5vh;
+	    width: 100%;
+	    border:2px solid;
+	    font-size: 100%;
+	    margin-bottom: 2vh;
+	}
+
+
+	#group_Create {
+	    background-color: #3087e1;
+	    color: white;
+	    padding: 1.5vw 1.8vw;
+	    margin: 8px 0;
+	    border: 1px solid #3087e1;
+	    width: 100%;
+	}
+	#group_Create:hover {
+	    background-color: white;
+	    color: #3087e1;
+	}
+
+	.checkmark {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 25px;
+	  width: 25px;
+	  background-color: #eee;
+	}
+
+</style>
 
 {% endblock %}

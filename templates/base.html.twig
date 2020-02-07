@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<title>Meow</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	<body>
+	    
+	    <header>
+			<nav>
+				<ul>
+					{% if app.user %}
+						<li><a href="{{ path('listeConversation') }}"><img src="{{ asset('/photo/logo_discussion.png') }}" style="max-height: 93%;width: auto"></a></li>
+					{% endif %}
+
+					<li><img src="{{ asset('/photo/logo.png') }}" style="max-height: 93%;width: auto"></li>
+
+					{% if app.user %}
+						<li><a href="{{ path('logout') }}"><img src="{{ asset('/photo/on_off.png') }}" style="max-height: 93%;width: auto"></a></li>
+					{% endif %}
+				</ul>
+			</nav>
+		</header>
+
+	    {% block content %}{% endblock %}
+
+	</body>
 </html>
+
+<style>
+	
+	header nav{
+		background-color: #1f1f1f;
+		height: 5em;
+		width: 100%;
+	}
+
+	header nav ul {
+	    height: 100% ;
+	    display: flex;
+	}
+
+	header nav ul li{
+	    height: 100%;
+	    width: 100%;
+	    display: inline-flex;
+	    justify-content: space-around;
+	    align-items: center;
+	    position: relative;
+	}
+
+	header nav ul li a{
+	    
+	    font-size: 30px;
+	    color: #ffffff;
+	    text-decoration: none;
+	    padding: 0 20px;
+	    height: 100%;
+	    width:100%;
+	    display: flex;
+	    justify-content:center;
+	    align-items: center;
+	}
+
+	header nav ul li a:hover {
+	    color: #3087e1;
+	    transition: all 0.3s linear;
+	}
+	
+	body, ul {
+		margin: 0;
+		padding: 0;
+	}	
+
+
+</style>

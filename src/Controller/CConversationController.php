@@ -59,15 +59,16 @@ class CConversationController extends AbstractController
         if($form -> isSubmitted() && $form -> isValid() ){
             $manager = $this -> getDoctrine() -> getManager();
             $manager -> persist($group);
-            $group->setUserP(1);
+            $userp = $this -> getUser();
+            $group->setUserP($userp);
             $group -> setDate(new \DateTime('now'));
             $manager -> flush();
             $this -> addFlash('success', 'Le group' . $group -> getId() . 'a bien été ajouté a la bdd');
-            return $this -> redirectToRoute('/list_conversation');
+            return $this -> redirectToRoute('listeConversation');
         } 
 
         return $this->render('c_conversation/creaConversation.html.twig', [
-            'postGroup' => $form -> createView()
+            'groupForm' => $form -> createView()
         ]);
 	}
 }
