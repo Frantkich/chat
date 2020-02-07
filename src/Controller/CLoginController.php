@@ -66,6 +66,7 @@ class CLoginController extends AbstractController
 			$user -> setPassword($newPassword);
 
 			$manager -> flush();
+			return $this -> redirectToRoute('listeConversation');
 		}
 
 		return $this -> render('c_login/signUp.html.twig',[

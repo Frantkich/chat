@@ -5,8 +5,12 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
+use App\Entity\Group;
+
+use App\Form\GroupType;
 
 
 class CConversationController extends AbstractController
@@ -48,10 +52,22 @@ class CConversationController extends AbstractController
 	* @Route("/creaConversation/", name="creaConversation")
 	*/
 
-	public function creaConversation(){
+	public function creaConversation(Request $request) {
+        $group = new Group;
+        $form = $this -> createForm(GroupType::class, $group);
+        $form -> handleRequest($request);
+        if($form -> isSubmitted() && $form -> isValid() ){
+            $manager = $this -> getDoctrine() -> getManager();
+            $manager -> persist($group);
+            $group->setUserP(1);
+            $group -> setDate(new \DateTime('now'));
+            $manager -> flush();
+            $this -> addFlash('success', 'Le group' . $group -> getId() . 'a bien été ajouté a la bdd');
+            return $this -> redirectToRoute('/list_conversation');
+        } 
 
-		
-		
-		return $this -> render('c_conversation/creaConversation.html.twig', []);
+        return $this->render('c_conversation/creaConversation.html.twig', [
+            'postGroup' => $form -> createView()
+        ]);
 	}
 }
