@@ -1,0 +1,75 @@
+{% block content %}
+
+Vous etes sur la page de connexion.
+
+	{% for message in app.flashes('errors') %}
+		<div class="alert alert-danger">{{ message }}</div>
+	{% endfor %}
+
+	<div id="container">
+
+		<form method="post" action="{{ path('login_check') }}" id="connexion_admin">
+
+			<h1>User connexion</h1>
+			
+				<input id="entrer" type="text" name="_username" placeholder="USERNAME" value="{{ lastUsername }}">
+
+				<input id="entrer" type="password" name="_password" placeholder="PASSWORD">
+
+				<input id='bouton' type="submit" value="connexion">
+
+				<h1>OR</h1>
+
+			<a href="/signUp" id="bouton">SIGN UP</a>
+
+		</form>
+
+	</div>
+
+{% endblock %}
+
+
+<style>
+    
+#container{
+    width: 40%;
+    margin: auto;
+    margin-top:10%;
+}
+
+#connexion_admin {
+    padding: 5vh;
+    border: 2px solid #f1f1f1;
+    box-shadow: 0 0 0.5vh;
+}
+#container h1{
+    padding-bottom: 3vh;
+    margin: 0;
+    text-align: center;
+}
+
+
+#entrer {
+    padding: 1.8vh 2.2vh;
+    margin: 0.5vh;
+    width: 100%;
+    border:2px solid;
+    font-size: 100%;
+    margin-bottom: 2vh;
+}
+
+
+#bouton {
+    background-color: #3087e1;
+    color: white;
+    padding: 1.5vw 1.8vw;
+    margin: 8px 0;
+    border: 1px solid #3087e1;
+    width: 100%;
+}
+#bouton:hover {
+    background-color: white;
+    color: #3087e1;
+}
+
+</style>

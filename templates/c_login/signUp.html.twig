@@ -1,0 +1,53 @@
+{% block content %}
+    
+    <h1>Create your account</h1>
+
+	{{ form(userForm) }}
+
+{% endblock %}
+
+
+<style>
+    
+#user{
+    width: 40%;
+    margin: auto;
+    margin-top:3vh;
+}
+
+#user div {
+    padding: 5vh;
+    border: 2px solid #f1f1f1;
+    box-shadow: 0 0 0.5vh;
+}
+h1{
+    padding-top: 3vh;
+    margin: 0;
+    text-align: center;
+}
+
+
+input {
+    padding: 1.8vh 2.2vh;
+    margin: 0.5vh;
+    width: 100%;
+    border:2px solid;
+    font-size: 100%;
+    margin-bottom: 2vh;
+}
+
+
+#user_Create_account {
+    background-color: #3087e1;
+    color: white;
+    padding: 1.5vw 1.8vw;
+    margin: 8px 0;
+    border: 1px solid #3087e1;
+    width: 100%;
+}
+#user_create_account:hover {
+    background-color: white;
+    color: #3087e1;
+}
+
+</style>
