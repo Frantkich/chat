@@ -24,7 +24,7 @@ class CLoginController extends AbstractController
 		$error = $auth -> getLastAuthenticationError();
 
 		if($error){
-			$this -> addFlash('errors', 'Erreur d\'identifiant !');
+			$this -> addFlash('errors', 'identifier error !!!');
 		}
 
 		return $this -> render('c_login/connexion.html.twig', [

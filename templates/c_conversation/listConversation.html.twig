@@ -1,10 +1,130 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+	
+	<div class="new_grp">
+		<a href="{{ path('creaConversation') }}"><input type="submit" id='bouton' value="New conversation"></a>
+	</div>
+	<div class="container">
+		<div class="firstGroup">
+			<div class="grpImg">
+				<img src="bvibes.jpg">	
+			</div>
+			<!-- <div class="grpName">
+				<p>SJW</p>
+				<span class="time">11:01</span>
+			</div>
+			<div class="lstMsg">
+				<p>#Man tear</p>
+			</div> -->
+			<table class="space">
+			<tr>
+    			<th>SJW</th>
+    			<th></th>
+    			<th></th>
+    			<th><span class="time">11:01</span></th>
+  			</tr>
+  			<tr>
+  				<th>#Man tear</th>
+  			</tr>
+			</table>
+		</div>
 
-Vous etes sur la page de la liste de vos conversation.
- 
-{{ user.username }}
+		<div class="secondGroup">
+			<div class="grpImg">
+				<img src="bvibes.jpg">	
+			</div>
+			<!-- <div class="grpName">
+				<p>SJW</p>
+				<span class="time">11:01</span>
+			</div>
+			<div class="lstMsg">
+				<p>#Man tear</p>
+			</div> -->
+			<table class="space">
+			<tr>
+    			<th>SJW</th>
+    			<th></th>
+    			<th></th>
+    			<th><span class="time">11:01</span></th>
+  			</tr>
+  			<tr>
+  				<th>#Man tear</th>
+  			</tr>
+			</table>
+
+		</div>
+	</div>
 
 
+	{% for group in user.groups %}
+	
+		<strong>Warning!</strong> {{ group.nom }}
+
+	{% endfor %}
+
+	<style>
+
+		img
+		{
+			width: 250px;
+			height: 125px;
+			
+
+		}
+		.new_grp
+		{
+			margin-top: 1%;
+			margin-left: 85%;
+
+		}
+		div input
+		{
+			width: 125px;
+			height: 50px;
+			background-color: #4C4CF3;
+
+		}
+		.container
+		{
+			margin-top: 1%;
+			margin: 2%;
+			max-width: 100%;
+			font-family: sans-serif;
+			letter-spacing: 0.5px;
+		}
+		.firstGroup
+		{
+			height: 10%;
+			overflow-y:auto;
+			background: #efefef none repeat scroll 0 0; 
+			border-style: solid;
+		}
+		.grpImg
+		{
+			height: 100px;
+			width: 100px;
+			float: left;
+			margin: auto;
+		}
+		div img
+		{
+			width: 85%;
+			height: 85%;
+		}
+
+		.space
+		{
+			border-spacing: 50px 20px;
+		}
+
+		.secondGroup
+		{
+			height: 10%;
+			overflow-y:auto;
+			background: #efefef none repeat scroll 0 0; 
+			border-style: solid;
+
+		}
+	</style>
 {% endblock %}
