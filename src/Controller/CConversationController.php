@@ -13,6 +13,7 @@ use App\Entity\Message;
 
 
 use App\Form\GroupType;
+use App\Form\MessageType;
 
 
 class CConversationController extends AbstractController
@@ -36,17 +37,33 @@ class CConversationController extends AbstractController
 	* @Route("/conversation/{id}", name="conversation")
 	*/
 
-	public function conversation($id){
-   		//1 : Récupérer les données (infos, commentaires)
-   		$repository = $this -> getDoctrine() -> getRepository(Message::class);
-   		$messages = $repository -> findAll($id);
+	public function conversation($id, Request $request){
 
-   		$manager = $this -> getDoctrine() -> getManager();
-   		$post = $manager -> find(Message::class,$id);
+      $repository = $this -> getDoctrine() -> getRepository(Group::class);
+      $group = $repository -> find($id);
 
-   		//2 : Afficher la vue (avec les data transmises)
+      $user = $this -> getUser();
+
+      $message = new Message;
+      $form = $this -> createForm(MessageType::class, $message);
+      $form -> handleRequest($request);
+
+      if($form -> isSubmitted() && $form -> isValid() ){
+          $manager = $this -> getDoctrine() -> getManager();
+          $manager -> persist($message);
+          $message -> setDate(new \DateTime('now'));
+          $message -> setUser($user);
+          $repository = $this -> getDoctrine() -> getRepository(Group::class);
+          $group = $repository -> find($id);
+          $message -> setGroupe($group);
+          $manager -> flush();
+          return $this -> redirectToRoute('conversation', array('id' => $id));
+      } 
+   		
    		return $this -> render('c_conversation/Conversation.html.twig', [
-   			'post' => $post
+   			'messageForm' => $form -> createView(),
+        'group' => $group,
+        'user' => $user
    		]);
    	}
 
@@ -65,7 +82,6 @@ class CConversationController extends AbstractController
             $group->setUserP($userp);
             $group -> setDate(new \DateTime('now'));
             $manager -> flush();
-            $this -> addFlash('success', 'Le group' . $group -> getId() . 'a bien été ajouté a la bdd');
             return $this -> redirectToRoute('listeConversation');
         } 
 

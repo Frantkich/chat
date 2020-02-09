@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Table(name="groupe")
  * @ORM\Entity(repositoryClass="App\Repository\GroupRepository")
@@ -25,7 +26,7 @@ class Group
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @ORM\Column(type="string", length=1)
      */
     private $photo;
 

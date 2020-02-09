@@ -41,7 +41,7 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=2)
+     * @ORM\Column(type="string", length=1)
      */
     private $photo;
 

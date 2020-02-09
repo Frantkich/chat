@@ -36,7 +36,7 @@ class Message
     /**
      * @ORM\Column(type="datetime")
      */
-    private $dateTime;
+    private $date;
 
     public function getId(): ?int
     {
@@ -79,14 +79,14 @@ class Message
         return $this;
     }
 
-    public function getDateTime(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->dateTime;
+        return $this->date;
     }
 
-    public function setDateTime(\DateTimeInterface $dateTime): self
+    public function setDate(\DateTimeInterface $dateTime): self
     {
-        $this->dateTime = $dateTime;
+        $this->date = $dateTime;
 
         return $this;
     }

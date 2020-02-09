@@ -16,7 +16,7 @@
 			<div class="container">
 				<div class="firstGroup">
 					<div class="grpImg">
-						<img src="bvibes.jpg">	
+						<img src="{{ asset('/photo/' ~ group.photo) }}">	
 					</div>
 					<table class="space">
 					<tr>
@@ -29,9 +29,6 @@
 		    			<th></th>
 		    			<th></th>
 		    			<th><span class="time">{{ group.date|date('d/m/Y') }} à {{ group.date|date('H:i:s') }}</span></th>
-		  			</tr>
-		  			<tr>
-		  				<th>#Man tear</th>
 		  			</tr>
 					</table>
 					<div class="icone">
