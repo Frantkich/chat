@@ -1,130 +1,137 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-	
+
 	<div class="new_grp">
-		<a href="{{ path('creaConversation') }}"><input type="submit" id='bouton' value="New conversation"></a>
-	</div>
-	<div class="container">
-		<div class="firstGroup">
-			<div class="grpImg">
-				<img src="bvibes.jpg">	
-			</div>
-			<!-- <div class="grpName">
-				<p>SJW</p>
-				<span class="time">11:01</span>
-			</div>
-			<div class="lstMsg">
-				<p>#Man tear</p>
-			</div> -->
-			<table class="space">
-			<tr>
-    			<th>SJW</th>
-    			<th></th>
-    			<th></th>
-    			<th><span class="time">11:01</span></th>
-  			</tr>
-  			<tr>
-  				<th>#Man tear</th>
-  			</tr>
-			</table>
-		</div>
-
-		<div class="secondGroup">
-			<div class="grpImg">
-				<img src="bvibes.jpg">	
-			</div>
-			<!-- <div class="grpName">
-				<p>SJW</p>
-				<span class="time">11:01</span>
-			</div>
-			<div class="lstMsg">
-				<p>#Man tear</p>
-			</div> -->
-			<table class="space">
-			<tr>
-    			<th>SJW</th>
-    			<th></th>
-    			<th></th>
-    			<th><span class="time">11:01</span></th>
-  			</tr>
-  			<tr>
-  				<th>#Man tear</th>
-  			</tr>
-			</table>
-
-		</div>
+		<a href="{{ path('creaConversation') }}"><input type="submit" value='new conversation' id='bouton' ></a>
 	</div>
 
+	{% if user.groups is empty %}
+		<h1>You do not have a chat group.</h1>
+	{% else %}
 
-	{% for group in user.groups %}
-	
-		<strong>Warning!</strong> {{ group.nom }}
+		{% for group in user.groups %}
 
-	{% endfor %}
+
+			<div class="container">
+				<div class="firstGroup">
+					<div class="grpImg">
+						<img src="bvibes.jpg">	
+					</div>
+					<table class="space">
+					<tr>
+		    			<th>{{ group.nom }}</th>
+		    			<th></th>
+		    			<th></th>
+		    			<th></th>
+		    			<th></th>
+		    			<th></th>
+		    			<th></th>
+		    			<th></th>
+		    			<th><span class="time">{{ group.date|date('d/m/Y') }} à {{ group.date|date('H:i:s') }}</span></th>
+		  			</tr>
+		  			<tr>
+		  				<th>#Man tear</th>
+		  			</tr>
+					</table>
+					<div class="icone">
+						<a href="{{ path('conversation', {id : group.id} ) }}"><i class="fa fa-arrow-right fa-5x" aria-hidden="true"></i></a>
+					</div>
+				</div>
+
+			</div>
+
+		{% endfor %}
+	{% endif %}
 
 	<style>
 
-		img
-		{
-			width: 250px;
-			height: 125px;
-			
+	img
+	{
+		width: 250px;
+		height: 125px;
+		
+	}
+	.new_grp
+	{
+		margin-top: 1%;
+		margin-left: 85%;
 
-		}
-		.new_grp
-		{
-			margin-top: 1%;
-			margin-left: 85%;
+	}
+	div input
+	{
+		width: 125px;
+		height: 50px;
+		background-color: #4C4CF3;
 
-		}
-		div input
-		{
-			width: 125px;
-			height: 50px;
-			background-color: #4C4CF3;
+	}
+	.container
+	{
+		margin-top: 1%;
+		margin: 2%;
+		max-width: 95%;
+		font-family: sans-serif;
+		letter-spacing: 0.5px;
+	}
+	.firstGroup
+	{
+		height: 10%;
+		overflow-y:auto;
+		background: #efefef none repeat scroll 0 0; 
+		/*border-style: solid;*/
+	}
+	.grpImg
+	{
+		height: 100px;
+		width: 100px;
+		float: left;
+		margin: auto;
+	}
+	div img
+	{
+		width: 85%;
+		height: 85%;
+	}
 
-		}
-		.container
-		{
-			margin-top: 1%;
-			margin: 2%;
-			max-width: 100%;
-			font-family: sans-serif;
-			letter-spacing: 0.5px;
-		}
-		.firstGroup
-		{
-			height: 10%;
-			overflow-y:auto;
-			background: #efefef none repeat scroll 0 0; 
-			border-style: solid;
-		}
-		.grpImg
-		{
-			height: 100px;
-			width: 100px;
-			float: left;
-			margin: auto;
-		}
-		div img
-		{
-			width: 85%;
-			height: 85%;
-		}
+	th
+	{
+		width: 75%;
+		height: 50%;
+	}
+	.space
+	{
+		border-spacing: 50px 20px;
+	}
+	.secondGroup
+	{
+		height: 10%;
+		overflow-y:auto;
+		background: #efefef none repeat scroll 0 0; 
+		/*border-style: solid;*/
 
-		.space
-		{
-			border-spacing: 50px 20px;
-		}
+	}
+	div
+	{
+		margin: auto;
+		padding: 1rem;
+		margin-top: 1%;
+		margin-right: 1%;
+	}
+	.icone
+	{
+		float: right;
+		margin-top: auto;
+		vertical-align: middle;
+	}
+	table 
+	{
+		font-size: 50px;
+	}
 
-		.secondGroup
-		{
-			height: 10%;
-			overflow-y:auto;
-			background: #efefef none repeat scroll 0 0; 
-			border-style: solid;
-
-		}
+	h1{
+        padding-bottom: 3vh;
+        margin: 0;
+        text-align: center;
+    }
 	</style>
 {% endblock %}

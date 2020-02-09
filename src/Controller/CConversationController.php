@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\User;
 use App\Entity\Group;
+use App\Entity\Message;
+
 
 use App\Form\GroupType;
 
@@ -43,7 +45,7 @@ class CConversationController extends AbstractController
    		$post = $manager -> find(Message::class,$id);
 
    		//2 : Afficher la vue (avec les data transmises)
-   		return $this -> render('post/show.html.twig', [
+   		return $this -> render('c_conversation/Conversation.html.twig', [
    			'post' => $post
    		]);
    	}
